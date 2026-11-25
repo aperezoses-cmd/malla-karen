@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Seguimiento personal de notas y avance de la malla de Derecho 2025 de la Universidad Autónoma de Chile.">
-  <title>La malla de Karen · Derecho UAutónoma 2025</title>
+  <meta name="description" content="Seguimiento personal de notas y avance de la malla vespertina de Derecho de la Universidad Autónoma de Chile.">
+  <title>La malla de Karen · Derecho UAutónoma</title>
   <style>
 :root {
   --bg: #f4f7f9;
@@ -566,7 +566,7 @@ main {
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">D</div>
         <div>
-          <p class="brand-kicker">Universidad Autónoma de Chile · Malla 2025</p>
+          <p class="brand-kicker">Universidad Autónoma de Chile · Malla Vespertina</p>
           <h1>Mi malla de Derecho</h1>
         </div>
       </div>
@@ -647,7 +647,7 @@ main {
       </label>
     </section>
 
-    <section class="malla" id="malla" aria-label="Malla curricular por semestre"></section>
+    <section class="malla" id="malla" aria-label="Malla curricular por trimestre"></section>
 
     <p class="empty-state" id="empty-state" hidden>No hay ramos que coincidan con tu búsqueda o filtro.</p>
 
@@ -655,11 +655,11 @@ main {
 
     <footer class="footer">
       <p>
-        Basado en la <a href="https://admision.uautonoma.cl/content/uploads/2025/01/Malla-Derecho-2025.pdf" target="_blank" rel="noopener noreferrer">malla curricular Derecho 2025</a>.
+        Basado en la <a href="https://admision.uautonoma.cl/content/uploads/2023/11/malla-derecho-vespertino.pdf" target="_blank" rel="noopener noreferrer">malla curricular Derecho Vespertina</a>.
         La universidad indica que la información es referencial y puede estar sujeta a modificaciones.
       </p>
       <p class="leyenda leyenda-base" id="leyenda-base" hidden>
-        Fondo dorado y etiqueta <strong>Base</strong>: ramos de semestres anteriores que sirven de requisito para avanzar.
+        Fondo dorado y etiqueta <strong>Base</strong>: ramos de trimestres anteriores que sirven de requisito para avanzar.
       </p>
       <p class="leyenda">
         Competencias: HC · Habilidades de Comunicación · TE · Trabajo en Equipo · CE · Comportamiento Ético ·
@@ -676,22 +676,22 @@ main {
 
 const PERFIL = {
   nombre: "Karen Cifuentes",
-  anioTexto: "4° año · 2027",
+  anioTexto: "3° año · último trimestre",
   titulo: "La malla de Karen",
   tituloResumen: "El avance de Karen",
-  chip: "Karen Cifuentes · 4° año",
-  textoHero: "Base cargada hasta 3° año: semestres 1 a 6 marcados como aprobados y semestres 7 y 8 como cursando. Ajusta notas y estados según tu situación real.",
+  chip: "Karen Cifuentes · 3° año",
+  textoHero: "Malla vespertina de 15 trimestres. Base cargada hasta 2° año: trimestres 1 a 8 aprobados y trimestre 9 cursando. Ajusta notas y estados según tu situación real.",
   minima: 4,
-  semestresAprobados: [1, 2, 3, 4, 5, 6],
-  semestresCursando: [7, 8],
-  semestresBase: [1, 2, 3, 4, 5, 6],
-  storageKey: "malla-derecho-2025-karen-cifuentes-v1"
+  semestresAprobados: [1, 2, 3, 4, 5, 6, 7, 8],
+  semestresCursando: [9],
+  semestresBase: [1, 2, 3, 4, 5, 6, 7, 8],
+  storageKey: "malla-derecho-vespertina-karen-cifuentes-v2"
 };
 
 </script>
   <script>
-// Malla curricular Derecho 2025 — Universidad Autónoma de Chile
-// Fuente: https://admision.uautonoma.cl/content/uploads/2025/01/Malla-Derecho-2025.pdf
+// Malla curricular Derecho Vespertina — Universidad Autónoma de Chile
+// Fuente: https://admision.uautonoma.cl/content/uploads/2023/11/malla-derecho-vespertino.pdf
 // La malla indicada por la universidad es referencial y puede estar sujeta a modificaciones.
 
 const COMPETENCIAS = {
@@ -709,10 +709,8 @@ const MALLA = [
     semestre: 1,
     ciclo: "Inicial",
     cursos: [
-      { id: "historia-derecho", nombre: "Historia del Derecho", tags: ["CE", "PC"] },
-      { id: "historia-evolucion-instituciones-civiles", nombre: "Historia y Evolución de las Instituciones Civiles", tags: ["CE", "PC"] },
+      { id: "historia-derecho", nombre: "Historia de Derecho", tags: ["CE", "PC"] },
       { id: "derecho-politico", nombre: "Derecho Político", tags: ["CE", "PC", "RS"] },
-      { id: "introduccion-economia", nombre: "Introducción a la Economía", tags: ["CE", "PC", "RS"] },
       { id: "introduccion-derecho", nombre: "Introducción al Derecho", tags: ["CE", "PC", "RS"] },
       { id: "electivo-comunicacion-1", nombre: "Electivo de Comunicación", tags: ["HC"], tipo: "Electivo" }
     ]
@@ -722,10 +720,8 @@ const MALLA = [
     ciclo: "Inicial",
     cursos: [
       { id: "historia-institucional-chile", nombre: "Historia Institucional de Chile", tags: ["CE", "PC"] },
-      { id: "fundamentos-filosoficos-derecho", nombre: "Fundamentos Filosóficos del Derecho", tags: ["CE", "PC"] },
+      { id: "historia-evolucion-instituciones-civiles", nombre: "Historia y Evolución de las Instituciones Civiles", tags: ["CE", "PC"] },
       { id: "teoria-ley-personas", nombre: "Teoría de la Ley y las Personas", tags: ["CE", "PC"] },
-      { id: "teoria-constitucional", nombre: "Teoría Constitucional", tags: ["CE", "PC"] },
-      { id: "argumentacion-juridica-debate", nombre: "Argumentación Jurídica y Debate", tags: ["HC", "CE", "PC"] },
       { id: "electivo-comunicacion-2", nombre: "Electivo de Comunicación", tags: ["HC"], tipo: "Electivo" }
     ]
   },
@@ -733,91 +729,125 @@ const MALLA = [
     semestre: 3,
     ciclo: "Inicial",
     cursos: [
-      { id: "acto-juridico", nombre: "Acto Jurídico", tags: ["CE", "PC"] },
-      { id: "organizacion-atribuciones-tribunales", nombre: "Organización y Atribuciones de los Tribunales", tags: ["CE", "PC", "RS"] },
-      { id: "derecho-constitucional-organico", nombre: "Derecho Constitucional Orgánico", tags: ["CE", "PC", "RS"] },
-      { id: "teoria-delito", nombre: "Teoría del Delito", tags: ["CE", "PC"] },
-      { id: "negociacion-etica-profesional", nombre: "Negociación y Ética Profesional", tags: ["TE", "CE", "PC", "RS"] },
-      { id: "electivo-desarrollo-pensamiento", nombre: "Electivo de Desarrollo del Pensamiento", tags: ["HC"], tipo: "Electivo" }
+      { id: "fundamentos-filosoficos-derecho", nombre: "Fundamentos Filosóficos del Derecho", tags: ["CE", "PC"] },
+      { id: "introduccion-economia", nombre: "Introducción a la Economía", tags: ["CE", "PC", "RS"] },
+      { id: "teoria-constitucional", nombre: "Teoría Constitucional", tags: ["CE", "PC"] },
+      { id: "argumentacion-juridica-debate", nombre: "Argumentación Jurídica y Debate", tags: ["HC", "CE", "PC"] }
     ]
   },
   {
     semestre: 4,
     ciclo: "Inicial",
     cursos: [
-      { id: "bienes", nombre: "Bienes", tags: ["PC"] },
-      { id: "teoria-proceso", nombre: "Teoría del Proceso", tags: ["PC"] },
-      { id: "derechos-garantias-constitucionales", nombre: "Derechos y Garantías Constitucionales", tags: ["CE", "PC", "RS"] },
-      { id: "derecho-internacional-publico", nombre: "Derecho Internacional Público", tags: ["CE", "PC"] },
-      { id: "teoria-reaccion-penal", nombre: "Teoría de la Reacción Penal", tags: ["CE", "PC", "RS"] },
-      { id: "taller-integracion-1", nombre: "Taller de Integración I", tags: ["PC"], tipo: "Taller" }
+      { id: "acto-juridico", nombre: "Acto Jurídico", tags: ["CE", "PC"] },
+      { id: "organizacion-atribuciones-tribunales", nombre: "Organización y Atribuciones de los Tribunales", tags: ["CE", "PC", "RS"] },
+      { id: "teoria-delito", nombre: "Teoría del Delito", tags: ["CE", "PC"] },
+      { id: "negociacion-etica-profesional", nombre: "Negociación y Ética Profesional", tags: ["TE", "CE", "PC", "RS"] }
     ]
   },
   {
     semestre: 5,
-    ciclo: "Intermedio",
+    ciclo: "Inicial",
     cursos: [
-      { id: "teoria-obligaciones", nombre: "Teoría de las Obligaciones", tags: ["CE", "PC"] },
-      { id: "procedimientos-civiles-cognicion", nombre: "Procedimientos Civiles de Cognición", tags: ["CE", "PC"] },
-      { id: "derecho-individual-trabajo", nombre: "Derecho Individual del Trabajo", tags: ["CE", "PC"] },
-      { id: "delitos-particular-1", nombre: "Delitos en Particular I", tags: ["CE", "PC"] },
-      { id: "electivo-desarrollo-personal", nombre: "Electivo de Desarrollo Personal", tags: ["CE"], tipo: "Electivo" }
+      { id: "teoria-proceso", nombre: "Teoría del Proceso", tags: ["PC"] },
+      { id: "derecho-constitucional-organico", nombre: "Derecho Constitucional Orgánico", tags: ["CE", "PC", "RS"] },
+      { id: "teoria-reaccion-penal", nombre: "Teoría de la Reacción Penal", tags: ["CE", "PC", "RS"] },
+      { id: "electivo-desarrollo-pensamiento", nombre: "Electivo de Desarrollo del Pensamiento", tags: ["HC"], tipo: "Electivo" }
     ]
   },
   {
     semestre: 6,
-    ciclo: "Intermedio",
+    ciclo: "Inicial",
     cursos: [
-      { id: "fuentes-obligaciones", nombre: "Fuentes de las Obligaciones", tags: ["CE", "PC"] },
-      { id: "procedimientos-ejecucion-cautela", nombre: "Procedimientos de Ejecución y Cautela", tags: ["CE", "PC"] },
-      { id: "derecho-mercantil", nombre: "Derecho Mercantil", tags: ["CE", "PC"] },
-      { id: "derecho-colectivo-trabajo-seguridad-social", nombre: "Derecho Colectivo del Trabajo y Seguridad Social", tags: ["CE", "PC"] },
-      { id: "delitos-particular-2", nombre: "Delitos en Particular II", tags: ["CE", "PC"] },
-      { id: "electivo-responsabilidad-social", nombre: "Electivo de Responsabilidad Social", tags: ["RS"], tipo: "Electivo" }
+      { id: "bienes", nombre: "Bienes", tags: ["PC"] },
+      { id: "derechos-garantias-constitucionales", nombre: "Derechos y Garantías Constitucionales", tags: ["CE", "PC", "RS"] },
+      { id: "derecho-internacional-publico", nombre: "Derecho Internacional Público", tags: ["CE", "PC"] },
+      { id: "taller-integracion-1", nombre: "Taller de Integración I", tags: ["PC"] }
     ]
   },
   {
     semestre: 7,
     ciclo: "Intermedio",
     cursos: [
-      { id: "derecho-familia", nombre: "Derecho de Familia", tags: ["CE", "PC"] },
-      { id: "responsabilidad-civil", nombre: "Responsabilidad Civil", tags: ["CE", "PC", "RS"] },
-      { id: "derecho-societario", nombre: "Derecho Societario", tags: ["CE", "PC"] },
-      { id: "derecho-administrativo-1", nombre: "Derecho Administrativo I", tags: ["CE", "PC", "RS"] },
-      { id: "derecho-procesal-penal", nombre: "Derecho Procesal Penal", tags: ["CE", "PC", "RS"] },
-      { id: "taller-litigacion", nombre: "Taller de Litigación", tags: ["HC", "TE", "CE", "PC", "RS"], tipo: "Taller" }
+      { id: "teoria-obligaciones", nombre: "Teoría de las Obligaciones", tags: ["CE", "PC"] },
+      { id: "procedimientos-civiles-cognicion", nombre: "Procedimientos Civiles de Cognición", tags: ["CE", "PC"] },
+      { id: "delitos-particular-1", nombre: "Delitos en Particular I", tags: ["CE", "PC"] }
     ]
   },
   {
     semestre: 8,
-    ciclo: "Avanzado",
+    ciclo: "Intermedio",
     cursos: [
-      { id: "derecho-sucesorio", nombre: "Derecho Sucesorio", tags: ["CE", "PC", "RS"] },
-      { id: "procedimientos-especiales-orales", nombre: "Procedimientos Especiales Orales", tags: ["HC", "CE", "PC"] },
-      { id: "contratacion-mercantil", nombre: "Contratación Mercantil", tags: ["CE", "PC"] },
-      { id: "derecho-administrativo-2", nombre: "Derecho Administrativo II", tags: ["CE", "PC"] },
-      { id: "derecho-tributario-1", nombre: "Derecho Tributario I", tags: ["CE", "PC", "RS"] },
-      { id: "optativo-especialidad-1", nombre: "Optativo de Especialidad I", tags: ["HC", "CE", "PC"], tipo: "Optativo" },
-      { id: "taller-integracion-2", nombre: "Taller de Integración II", tags: ["HC", "TE", "CE", "PC", "RS"], tipo: "Taller" }
+      { id: "fuentes-obligaciones", nombre: "Fuentes de las Obligaciones", tags: ["CE", "PC"] },
+      { id: "derecho-individual-trabajo", nombre: "Derecho Individual del Trabajo", tags: ["CE", "PC"] },
+      { id: "delitos-particular-2", nombre: "Delitos en Particular II", tags: ["CE", "PC"] },
+      { id: "electivo-desarrollo-personal", nombre: "Electivo de Desarrollo Personal", tags: ["CE"], tipo: "Electivo" }
     ]
   },
   {
     semestre: 9,
-    ciclo: "Avanzado",
+    ciclo: "Intermedio",
     cursos: [
-      { id: "recursos", nombre: "Recursos", tags: ["CE", "PC", "RS"] },
-      { id: "seminario-investigacion", nombre: "Seminario de Investigación", tags: ["HC", "CE", "PC", "RS"] },
-      { id: "reorganizacion-liquidacion-patrimonial", nombre: "Reorganización y Liquidación Patrimonial", tags: ["CE", "PC", "RS"] },
-      { id: "derecho-tributario-2", nombre: "Derecho Tributario II", tags: ["CE", "PC", "RS"] },
-      { id: "optativo-especialidad-2", nombre: "Optativo de Especialidad II", tags: ["HC", "CE", "PC", "RS"], tipo: "Optativo" },
-      { id: "clinica-juridica", nombre: "Clínica Jurídica", tags: ["TE", "CE"], tipo: "Clínica" }
+      { id: "procedimientos-ejecucion-cautela", nombre: "Procedimientos de Ejecución y Cautela", tags: ["CE", "PC"] },
+      { id: "derecho-mercantil", nombre: "Derecho Mercantil", tags: ["CE", "PC"] },
+      { id: "derecho-colectivo-trabajo-seguridad-social", nombre: "Derecho Colectivo del Trabajo y Seguridad Social", tags: ["CE", "PC"] },
+      { id: "electivo-responsabilidad-social", nombre: "Electivo de Responsabilidad Social", tags: ["RS"], tipo: "Electivo" }
     ]
   },
   {
     semestre: 10,
+    ciclo: "Intermedio",
+    cursos: [
+      { id: "derecho-familia", nombre: "Derecho de Familia", tags: ["CE", "PC"] },
+      { id: "responsabilidad-civil", nombre: "Responsabilidad Civil", tags: ["CE", "PC", "RS"] },
+      { id: "derecho-societario", nombre: "Derecho Societario", tags: ["CE", "PC"] },
+      { id: "taller-litigacion", nombre: "Taller de Litigación", tags: ["HC", "TE", "CE", "PC", "RS"] }
+    ]
+  },
+  {
+    semestre: 11,
+    ciclo: "Intermedio",
+    cursos: [
+      { id: "derecho-sucesorio", nombre: "Derecho Sucesorio", tags: ["CE", "PC", "RS"] },
+      { id: "contratacion-mercantil", nombre: "Contratación Mercantil", tags: ["CE", "PC"] },
+      { id: "derecho-administrativo-1", nombre: "Derecho Administrativo I", tags: ["CE", "PC", "RS"] },
+      { id: "derecho-procesal-penal", nombre: "Derecho Procesal Penal", tags: ["CE", "PC", "RS"] }
+    ]
+  },
+  {
+    semestre: 12,
+    ciclo: "Intermedio",
+    cursos: [
+      { id: "procedimientos-especiales-orales", nombre: "Procedimientos Especiales Orales", tags: ["HC", "CE", "PC"] },
+      { id: "derecho-administrativo-2", nombre: "Derecho Administrativo II", tags: ["CE", "PC"] },
+      { id: "derecho-tributario-1", nombre: "Derecho Tributario I", tags: ["CE", "PC", "RS"] },
+      { id: "taller-integracion-2", nombre: "Taller de Integración II", tags: ["HC", "TE", "CE", "PC", "RS"] },
+      { id: "optativo-especialidad-1", nombre: "Optativo de Especialidad I", tags: ["HC", "TE", "CE", "PC", "RS"], tipo: "Optativo" }
+    ]
+  },
+  {
+    semestre: 13,
     ciclo: "Avanzado",
     cursos: [
-      { id: "taller-integracion-3", nombre: "Taller de Integración III", tags: ["HC", "TE", "CE", "PC", "RS"], tipo: "Taller" }
+      { id: "reorganizacion-liquidacion-patrimonial", nombre: "Reorganización y Liquidación Patrimonial", tags: ["CE", "PC", "RS"] },
+      { id: "recursos", nombre: "Recursos", tags: ["CE", "PC", "RS"] },
+      { id: "seminario-investigacion-juridica", nombre: "Seminario de Investigación Jurídica", tags: ["HC", "CE", "PC", "RS"] },
+      { id: "derecho-tributario-2", nombre: "Derecho Tributario II", tags: ["CE", "PC", "RS"] },
+      { id: "optativo-especialidad-2", nombre: "Optativo de Especialidad II", tags: ["CE", "PC", "RS"], tipo: "Optativo" }
+    ]
+  },
+  {
+    semestre: 14,
+    ciclo: "Avanzado",
+    cursos: [
+      { id: "taller-integracion-3", nombre: "Taller de Integración III", tags: ["HC", "TE", "CE", "PC", "RS"] }
+    ]
+  },
+  {
+    semestre: 15,
+    ciclo: "Avanzado",
+    cursos: [
+      { id: "clinica-juridica", nombre: "Clínica Jurídica", tags: ["HC", "TE", "CE", "PC", "RS"] }
     ]
   }
 ];
@@ -832,10 +862,12 @@ const PERFIL_ACTIVO = typeof PERFIL !== "undefined" && PERFIL && typeof PERFIL =
 const STORAGE_KEY = PERFIL_ACTIVO?.storageKey || "malla-derecho-2025-v1";
 
 const CICLOS = [
-  { nombre: "Inicial", semestres: [1, 2, 3, 4] },
-  { nombre: "Intermedio", semestres: [5, 6, 7] },
-  { nombre: "Avanzado", semestres: [8, 9, 10] }
+  { nombre: "Inicial", semestres: [1, 2, 3, 4, 5, 6] },
+  { nombre: "Intermedio", semestres: [7, 8, 9, 10, 11, 12] },
+  { nombre: "Avanzado", semestres: [13, 14, 15] }
 ];
+
+const PERIODO_LABEL = "Trimestre";
 
 const ESTADOS = {
   pendiente: { label: "Pendiente" },
@@ -1178,10 +1210,10 @@ function renderMalla() {
     const progreso = progresoSemestre(semestre);
 
     return `
-      <section class="semestre" data-semestre="${semestre.semestre}" aria-label="Semestre ${semestre.semestre}">
+      <section class="semestre" data-semestre="${semestre.semestre}" aria-label="${PERIODO_LABEL} ${semestre.semestre}">
         <div class="semestre-head">
           <div class="semestre-title">
-            <h3>${semestre.semestre}° Semestre</h3>
+            <h3>${semestre.semestre}° ${PERIODO_LABEL}</h3>
             <span>Ciclo ${semestre.ciclo}</span>
           </div>
           <div class="semestre-sub">
