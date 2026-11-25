@@ -321,6 +321,53 @@ main {
   text-align: center;
 }
 
+.malla-nav {
+  position: sticky;
+  top: var(--topbar-h, 74px);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.nav-btn {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.nav-btn:hover { background: #dcece9; }
+
+#nav-trimestre {
+  flex: 1 1 auto;
+  min-width: 80px;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.nav-label {
+  flex: 0 0 auto;
+  min-width: 116px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
 .malla {
   display: grid;
   grid-auto-flow: column;
@@ -523,7 +570,7 @@ main {
   @page { size: A4 landscape; margin: 10mm; }
 
   body { background: #fff; font-size: 10px; }
-  .topbar, .toolbar, .extras, .toast, .footer a, .curso-controles, .comentario, .semestre-track { display: none !important; }
+  .topbar, .toolbar, .extras, .malla-nav, .toast, .footer a, .curso-controles, .comentario, .semestre-track { display: none !important; }
   main { max-width: none; padding: 0; }
 
   .print-header { display: block; font-size: 18px; font-weight: 800; margin-bottom: 8px; }
@@ -646,6 +693,13 @@ main {
         <input type="number" id="nota-minima" min="1" max="7" step="0.1" value="4" aria-label="Nota mínima de aprobación">
       </label>
     </section>
+
+    <nav class="malla-nav" id="malla-nav" aria-label="Navegación de trimestres">
+      <button type="button" class="nav-btn" id="nav-anterior" aria-label="Trimestre anterior">‹</button>
+      <input type="range" id="nav-trimestre" min="1" max="15" value="1" aria-label="Ir al trimestre">
+      <span class="nav-label" id="nav-label">Trimestre 1 de 15</span>
+      <button type="button" class="nav-btn" id="nav-siguiente" aria-label="Trimestre siguiente">›</button>
+    </nav>
 
     <section class="malla" id="malla" aria-label="Malla curricular por trimestre"></section>
 
@@ -911,6 +965,8 @@ let filtroActual = "todos";
 let busquedaActual = "";
 
 const mallaEl = document.getElementById("malla");
+const navTrimestreEl = document.getElementById("nav-trimestre");
+const navLabelEl = document.getElementById("nav-label");
 const emptyStateEl = document.getElementById("empty-state");
 const busquedaEl = document.getElementById("busqueda");
 const filtrosEl = document.getElementById("filtros");
@@ -1230,6 +1286,44 @@ function renderMalla() {
   emptyStateEl.hidden = visibles > 0;
 }
 
+function seccionesVisibles() {
+  return [...mallaEl.querySelectorAll(".semestre")];
+}
+
+function actualizarNavLabel() {
+  if (!navTrimestreEl || !navLabelEl) return;
+  const secciones = seccionesVisibles();
+  if (!secciones.length) {
+    navLabelEl.textContent = `Sin ${PERIODO_LABEL.toLowerCase()}s`;
+    return;
+  }
+  navTrimestreEl.max = String(secciones.length);
+  const indice = Math.min(Math.max(Number(navTrimestreEl.value) || 1, 1), secciones.length);
+  navTrimestreEl.value = String(indice);
+  navLabelEl.textContent = `${secciones[indice - 1].dataset.semestre}° ${PERIODO_LABEL} de ${MALLA.length}`;
+}
+
+function irATrimestre(valor) {
+  const secciones = seccionesVisibles();
+  if (!secciones.length) return;
+  const indice = Math.min(Math.max(Math.round(valor) || 1, 1), secciones.length);
+  const seccion = secciones[indice - 1];
+  const objetivo = seccion.getBoundingClientRect().left - mallaEl.getBoundingClientRect().left + mallaEl.scrollLeft;
+  mallaEl.scrollTo({ left: objetivo, behavior: "smooth" });
+  navTrimestreEl.value = String(indice);
+  actualizarNavLabel();
+}
+
+function actualizarNav() {
+  if (!navTrimestreEl) return;
+  actualizarNavLabel();
+}
+
+function ajustarOffsetNav() {
+  const topbar = document.querySelector(".topbar");
+  if (topbar) document.documentElement.style.setProperty("--topbar-h", `${topbar.offsetHeight}px`);
+}
+
 function render() {
   const printHeader = document.getElementById("print-header");
   if (printHeader && !printHeader.textContent.trim()) printHeader.textContent = "Mi malla de Derecho";
@@ -1238,6 +1332,7 @@ function render() {
   renderExtrasHtml();
   renderExtras();
   renderMalla();
+  actualizarNav();
 }
 
 function actualizarTarjeta(card, id) {
@@ -1442,9 +1537,37 @@ document.getElementById("btn-reiniciar").addEventListener("click", () => {
   mostrarToast("Progreso reiniciado");
 });
 
+if (navTrimestreEl) {
+  navTrimestreEl.addEventListener("input", (evente) => irATrimestre(Number(evente.target.value)));
+  document.getElementById("nav-anterior").addEventListener("click", () => irATrimestre(Number(navTrimestreEl.value) - 1));
+  document.getElementById("nav-siguiente").addEventListener("click", () => irATrimestre(Number(navTrimestreEl.value) + 1));
+}
+
+let navScrollFrame = 0;
+mallaEl.addEventListener("scroll", () => {
+  cancelAnimationFrame(navScrollFrame);
+  navScrollFrame = requestAnimationFrame(() => {
+    const secciones = seccionesVisibles();
+    if (!secciones.length) return;
+    const izquierda = mallaEl.getBoundingClientRect().left;
+    let indice = 1;
+    secciones.forEach((seccion, i) => {
+      if (seccion.getBoundingClientRect().left <= izquierda + 8) indice = i + 1;
+    });
+    navTrimestreEl.value = String(indice);
+    actualizarNavLabel();
+  });
+}, { passive: true });
+
+window.addEventListener("resize", () => {
+  ajustarOffsetNav();
+  actualizarNav();
+});
+
 aplicarPerfil();
 if (PERFIL_ACTIVO && !localStorage.getItem(STORAGE_KEY)) guardarEstado();
 render();
+ajustarOffsetNav();
 
 </script>
 </body>
