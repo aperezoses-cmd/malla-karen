@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Seguimiento personal de notas y avance de la malla de Derecho 2025 de la Universidad Autónoma de Chile.">
+  <title>La malla de Karen · Derecho UAutónoma 2025</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">D</div>
+        <div>
+          <p class="brand-kicker">Universidad Autónoma de Chile · Malla 2025</p>
+          <h1>Mi malla de Derecho</h1>
+        </div>
+      </div>
+      <div class="perfil-chip" id="perfil-chip" hidden></div>
+      <div class="topbar-actions">
+        <button type="button" class="btn btn-ghost" id="btn-importar">Importar progreso</button>
+        <button type="button" class="btn btn-ghost" id="btn-exportar">Exportar progreso</button>
+        <button type="button" class="btn btn-ghost btn-danger" id="btn-reiniciar">Reiniciar</button>
+        <input type="file" id="archivo-importar" accept="application/json,.json" hidden>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="resumen-titulo">
+      <div class="hero-copy">
+        <p class="eyebrow">Licenciatura en Ciencias Jurídicas · Abogacía</p>
+        <h2 id="resumen-titulo">Tu avance, ramo a ramo</h2>
+        <p class="hero-text">
+          Anota tus calificaciones y comentarios. Los ramos con nota igual o superior al mínimo
+          se marcan automáticamente como aprobados. Todo se guarda en este navegador.
+        </p>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-head">
+          <span class="progress-label">Progreso general</span>
+          <strong id="avance-texto">0 / 55 aprobados</strong>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="avance-barra">
+          <div class="progress-fill" id="avance-fill"></div>
+        </div>
+        <span class="progress-pct" id="avance-pct">0%</span>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Resumen de tu situación">
+      <article class="stat">
+        <span class="stat-value" id="stat-aprobados">0</span>
+        <span class="stat-label">Aprobados</span>
+      </article>
+      <article class="stat">
+        <span class="stat-value" id="stat-cursando">0</span>
+        <span class="stat-label">Cursando</span>
+      </article>
+      <article class="stat">
+        <span class="stat-value" id="stat-pendientes">0</span>
+        <span class="stat-label">Pendientes</span>
+      </article>
+      <article class="stat">
+        <span class="stat-value" id="stat-reprobados">0</span>
+        <span class="stat-label">Reprobados</span>
+      </article>
+      <article class="stat">
+        <span class="stat-value" id="stat-promedio">—</span>
+        <span class="stat-label">Promedio con notas</span>
+      </article>
+    </section>
+
+    <section class="toolbar" aria-label="Filtros y búsqueda">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input type="search" id="busqueda" placeholder="Buscar un ramo…" aria-label="Buscar un ramo">
+      </div>
+      <div class="filters" id="filtros" role="group" aria-label="Filtrar por estado">
+        <button type="button" class="chip active" data-filtro="todos">Todos</button>
+        <button type="button" class="chip" data-filtro="pendiente">Pendientes</button>
+        <button type="button" class="chip" data-filtro="cursando">Cursando</button>
+        <button type="button" class="chip" data-filtro="aprobado">Aprobados</button>
+        <button type="button" class="chip" data-filtro="reprobado">Reprobados</button>
+      </div>
+      <label class="minima">
+        Nota mínima
+        <input type="number" id="nota-minima" min="1" max="7" step="0.1" value="4" aria-label="Nota mínima de aprobación">
+      </label>
+    </section>
+
+    <section class="malla" id="malla" aria-label="Malla curricular por semestre"></section>
+
+    <p class="empty-state" id="empty-state" hidden>No hay ramos que coincidan con tu búsqueda o filtro.</p>
+
+    <footer class="footer">
+      <p>
+        Basado en la <a href="https://admision.uautonoma.cl/content/uploads/2025/01/Malla-Derecho-2025.pdf" target="_blank" rel="noopener noreferrer">malla curricular Derecho 2025</a>.
+        La universidad indica que la información es referencial y puede estar sujeta a modificaciones.
+      </p>
+      <p class="leyenda">
+        Competencias: HC · Habilidades de Comunicación · TE · Trabajo en Equipo · CE · Comportamiento Ético ·
+        PC · Pensamiento Crítico · RS · Responsabilidad Social
+      </p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="perfil-karen.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
