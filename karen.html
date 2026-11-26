@@ -18,6 +18,13 @@
   --brand-soft: #e3f2ef;
   --gold: #c99a2e;
   --gold-soft: #fbf2dc;
+  --lila: #d9b8ff;
+  --pink: #e85c9f;
+  --pink-soft: #ffe6f2;
+  --pink-dark: #a3175c;
+  --purple: #7b3fc3;
+  --purple-soft: #eee3ff;
+  --purple-dark: #5b2a9e;
   --danger: #b4473f;
   --danger-soft: #fae9e7;
   --blue: #2f6f9e;
@@ -69,13 +76,13 @@ button { cursor: pointer; }
   width: 42px;
   height: 42px;
   border-radius: 11px;
-  background: linear-gradient(145deg, var(--brand), var(--brand-dark));
+  background: linear-gradient(145deg, #d9b8ff, #9a5fd6);
   color: #fff;
   display: grid;
   place-items: center;
   font-weight: 800;
   font-size: 22px;
-  box-shadow: 0 5px 14px rgba(11, 107, 98, 0.25);
+  box-shadow: 0 5px 14px rgba(123, 63, 195, 0.28);
 }
 
 .brand-kicker {
@@ -83,7 +90,7 @@ button { cursor: pointer; }
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: #000;
   font-weight: 700;
 }
 
@@ -93,9 +100,9 @@ button { cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--brand-soft);
-  color: var(--brand-dark);
-  border: 1px solid #bfe0d9;
+  background: #eee3ff;
+  color: #000;
+  border: 1px solid #c9a1ff;
   border-radius: 999px;
   padding: 7px 13px;
   font-size: 12px;
@@ -104,7 +111,7 @@ button { cursor: pointer; }
 
 .perfil-chip::before {
   content: "✦";
-  color: var(--gold);
+  color: #8e5fd8;
   font-size: 13px;
 }
 
@@ -139,9 +146,9 @@ main {
   border-radius: 18px;
   color: #fff;
   background:
-    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.16), transparent 38%),
-    linear-gradient(120deg, #0a5149, #0b6b62 55%, #128076);
-  box-shadow: 0 14px 34px rgba(7, 75, 69, 0.18);
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.18), transparent 38%),
+    linear-gradient(120deg, #6d3bbf, #9a5fd6 55%, #c9a1ff);
+  box-shadow: 0 14px 34px rgba(123, 63, 195, 0.2);
 }
 
 .eyebrow {
@@ -149,12 +156,12 @@ main {
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #a9ded5;
+  color: #f3e8ff;
   font-weight: 700;
 }
 
 .hero h2 { margin: 0 0 10px; font-size: clamp(22px, 3vw, 30px); }
-.hero-text { margin: 0; max-width: 620px; color: #d8eeea; font-size: 14px; }
+.hero-text { margin: 0; max-width: 620px; color: #f3e8ff; font-size: 14px; }
 
 .progress-card {
   background: rgba(255, 255, 255, 0.1);
@@ -171,7 +178,7 @@ main {
   margin-bottom: 12px;
 }
 
-.progress-label { color: #c6e8e2; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+.progress-label { color: #f3e8ff; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
 .progress-head strong { font-size: 15px; }
 
 .progress-track {
@@ -189,7 +196,7 @@ main {
   transition: width 0.35s ease;
 }
 
-.progress-pct { display: block; margin-top: 8px; font-size: 12px; color: #d8eeea; text-align: right; }
+.progress-pct { display: block; margin-top: 8px; font-size: 12px; color: #f3e8ff; text-align: right; }
 
 .stats {
   display: grid;
@@ -235,8 +242,8 @@ main {
   margin: 12px 0 0;
   padding: 10px 12px;
   border-radius: 9px;
-  background: var(--brand-soft);
-  color: var(--brand-dark);
+  background: #eee3ff;
+  color: #000;
   font-size: 12.5px;
   font-weight: 600;
 }
@@ -343,14 +350,14 @@ main {
   height: 32px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--brand-soft);
-  color: var(--brand-dark);
+  background: #eee3ff;
+  color: #000;
   font-size: 20px;
   line-height: 1;
   font-weight: 800;
 }
 
-.nav-btn:hover { background: #dcece9; }
+.nav-btn:hover { background: #d9b8ff; }
 
 #nav-trimestre {
   flex: 1 1 auto;
@@ -424,11 +431,13 @@ main {
   min-height: 218px;
 }
 
-.curso.aprobado { border-left-color: var(--brand); background: linear-gradient(180deg, #fff, #f6fbfa); }
-.curso.cursando { border-left-color: var(--blue); background: linear-gradient(180deg, #fff, #f6fafd); }
+.curso.aprobado { border-left-color: var(--pink); background: linear-gradient(180deg, #fff, var(--pink-soft)); }
+.curso.cursando { border-left-color: var(--purple); background: linear-gradient(180deg, #fff, var(--purple-soft)); }
+.curso.pendiente { background: #fff; }
 .curso.reprobado { border-left-color: var(--danger); background: linear-gradient(180deg, #fff, #fdf7f6); }
-.curso.requisito { border-left-color: var(--gold); background: linear-gradient(180deg, #fffdf7, #fbf1d9); }
-.curso.requisito.aprobado { background: linear-gradient(180deg, #fffdf7, #f8edcf); }
+.curso.requisito { border-left-color: var(--gold); }
+.curso.requisito.aprobado { border-left-color: var(--gold); background: linear-gradient(180deg, #fff, var(--pink-soft)); }
+.curso.requisito.cursando { border-left-color: var(--gold); background: linear-gradient(180deg, #fff, var(--purple-soft)); }
 
 .curso-top { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .curso-nombre {
@@ -455,8 +464,9 @@ main {
   white-space: nowrap;
 }
 
-.estado.aprobado { background: var(--brand-soft); color: var(--brand-dark); }
-.estado.cursando { background: var(--blue-soft); color: var(--blue); }
+.estado.pendiente { background: #fff; color: #7b8790; box-shadow: inset 0 0 0 1px var(--line); }
+.estado.aprobado { background: var(--pink-soft); color: var(--pink-dark); }
+.estado.cursando { background: var(--purple-soft); color: var(--purple-dark); }
 .estado.reprobado { background: var(--danger-soft); color: var(--danger); }
 
 .tags { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -713,7 +723,7 @@ main {
         La universidad indica que la información es referencial y puede estar sujeta a modificaciones.
       </p>
       <p class="leyenda leyenda-base" id="leyenda-base" hidden>
-        Fondo dorado y etiqueta <strong>Base</strong>: ramos de trimestres anteriores que sirven de requisito para avanzar.
+        Borde dorado y etiqueta <strong>Base</strong>: ramos de trimestres anteriores que sirven de requisito para avanzar.
       </p>
       <p class="leyenda">
         Competencias: HC · Habilidades de Comunicación · TE · Trabajo en Equipo · CE · Comportamiento Ético ·
